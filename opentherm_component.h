@@ -31,7 +31,7 @@ public:
   BinarySensor *flame = new OpenthermBinarySensor();
   
   // Set 3 sec. to give time to read all sensors (and not appear in HA as not available)
-  OpenthermComponent(): PollingComponent(3000) {
+  OpenthermComponent(): PollingComponent(15000) {
 
   }
 
