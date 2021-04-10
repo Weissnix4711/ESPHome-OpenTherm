@@ -21,7 +21,7 @@ private:
   const char *TAG = "opentherm_component";
 public:
   Switch *thermostatSwitch = new OpenthermSwitch();
-  Sensor *external_temperature_sensor = new Sensor();
+  //Sensor *external_temperature_sensor = new Sensor();
   Sensor *return_temperature_sensor = new Sensor();
   Sensor *boiler_temperature = new Sensor();
   Sensor *pressure_sensor = new Sensor();
@@ -46,10 +46,10 @@ public:
         ESP_LOGD ("opentherm_component", "termostatSwitch_on_state_callback %d", state);    
       });
   }
-  float getExternalTemperature() {
-      unsigned long response = ot.sendRequest(ot.buildRequest(OpenThermRequestType::READ, OpenThermMessageID::Toutside, 0));
-      return ot.isValidResponse(response) ? ot.getFloat(response) : -1;
-  }
+  //float getExternalTemperature() {
+  //    unsigned long response = ot.sendRequest(ot.buildRequest(OpenThermRequestType::READ, OpenThermMessageID::Toutside, 0));
+  //    return ot.isValidResponse(response) ? ot.getFloat(response) : -1;
+  //}
 
   float getReturnTemperature() {
       unsigned long response = ot.sendRequest(ot.buildRequest(OpenThermRequestType::READ, OpenThermMessageID::Tret, 0));
@@ -109,7 +109,7 @@ public:
 
     // Read sensor values
     float boilerTemperature = ot.getBoilerTemperature();
-    float ext_temperature = getExternalTemperature();
+    //float ext_temperature = getExternalTemperature();
     float return_temperature = getReturnTemperature();
     float hotWater_temperature = getHotWaterTemperature();
     float pressure = getPressure();
@@ -117,7 +117,7 @@ public:
 
     // Publish sensor values
     flame->publish_state(isFlameOn); 
-    external_temperature_sensor->publish_state(ext_temperature);
+    //external_temperature_sensor->publish_state(ext_temperature);
     return_temperature_sensor->publish_state(return_temperature);
     boiler_temperature->publish_state(boilerTemperature);
     pressure_sensor->publish_state(pressure);

@@ -45,7 +45,6 @@ sensor:
       OpenthermComponent *openthermComp = (OpenthermComponent*) opentherm;
       return { 
         openthermComp->boiler_temperature, 
-        openthermComp->external_temperature_sensor, 
         openthermComp->return_temperature_sensor, 
         openthermComp->pressure_sensor,
         openthermComp->modulation_sensor
@@ -54,9 +53,6 @@ sensor:
     - name: "Boiler Temperature"
       unit_of_measurement: °C
       accuracy_decimals: 2  
-    - name: "External Temperature"
-      unit_of_measurement: °C
-      accuracy_decimals: 0  
     - name: "Return Temperature"
       unit_of_measurement: °C
       accuracy_decimals: 2
